@@ -13,6 +13,7 @@ async function handleAgentsRequest(sendResponse) {
 
     let url = new URL('https://api.chirper.ai/v1/agent');
     url.searchParams.append('user', user.id);
+    url.searchParams.append('limit', '1000');
     response = await fetch(url, { credentials: 'include' });
     if (!response.ok) {
         console.error("/v1/agent failed", response);
