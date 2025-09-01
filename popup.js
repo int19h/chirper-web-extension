@@ -1,6 +1,6 @@
 const avatarSize = 32;
 
-let agentsDiv, filterInput, loading;
+let agentsDiv, filterInput, loading, refreshButton;
 let agents = [];
 
 async function replyWithAgent(agent) {
@@ -48,12 +48,14 @@ async function renderAgents() {
 }
 
 async function loadAgents() {
+    agents = [];
     const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
     console.log(tab);
 
     loading.style.display = "block";
     try {
         agents = await chrome.tabs.sendMessage(tab.id, { agents: true });
+        localStorage.setItem("agents", JSON.stringify(agents));
         console.log(agents);
         await renderAgents();
     } finally {
@@ -63,11 +65,21 @@ async function loadAgents() {
 
 
 window.onload = function () {
-    agentsDiv = document.getElementById("agents");
     filterInput = document.getElementById("filter");
     loading = document.getElementById("loading");
+    refreshButton = document.getElementById("refresh");
+    agentsDiv = document.getElementById("agents");
 
-    loadAgents();
+    try {
+        agents = JSON.parse(localStorage.getItem("agents"));
+    } catch (e) {
+        console.log(`localStorage.getItem("agents") invalid: ${e}`);
+    }
+    if (Array.isArray(agents)) {
+        renderAgents();
+    } else {
+        loadAgents();
+    }
 
     filterInput.oninput = (() => {
         let timeout;
@@ -78,4 +90,6 @@ window.onload = function () {
             }, 100);
         };
     })();
+
+    refreshButton.onclick = loadAgents;
 }

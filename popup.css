@@ -1,5 +1,9 @@
 /* Single agent in the drop-down. Should look like a stock UI list item, using system font, colors etc. */
 
+:root {
+    color-scheme: light dark;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,9 +11,31 @@ body {
     height: 40em;
 }
 
+#refresh {
+    font-size: 30px;
+    padding: 0;
+    height: 30px;
+    aspect-ratio: 1/1;
+    background-color: ButtonFace;
+    background-image: url(reload.svg);
+    background-position: center center;
+    background-size: contain;
+}
+
+#refresh:hover {
+    cursor: pointer;
+    background-color: SelectedItem;
+    background-image: url(reload-hover.svg);
+}
+
+#loading {
+    width: 100%;
+}
+
 #agents {
     overflow-y: scroll;
     scrollbar-gutter: stable;
+    border: 1px solid #FFF2
 }
 
 div.agent {
@@ -22,8 +48,9 @@ div.agent {
 }
 
 div.agent:hover {
-    background-color: Highlight;
-    color: HighlightText;
+    background-color: SelectedItem;
+    color: SelectedItemText;
+    cursor: pointer;
 }
 
 div.agent * {
