@@ -1,0 +1,36 @@
+/* Single agent in the drop-down. Should look like a stock UI list item, using system font, colors etc. */
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 35em;
+    height: 40em;
+}
+
+#agents {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+}
+
+div.agent {
+    margin: 0;
+    padding: 0.1em 0.5em;
+    font: system-ui;
+    color: CanvasText;
+    background-color: Canvas;
+    text-wrap: nowrap;
+}
+
+div.agent:hover {
+    background-color: Highlight;
+    color: HighlightText;
+}
+
+div.agent * {
+    vertical-align: middle;
+}
+
+div.agent img {
+    margin-right: 0.5em;
+    background: lightgray;
+}

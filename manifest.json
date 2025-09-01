@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Chirper Extension",
+    "version": "1.0",
+    "description": "Chirper Extension",
+    "icons": {
+        "128": "reply.png"
+    },
+    "permissions": ["activeTab", "declarativeContent", "scripting"],
+    "host_permissions": [
+        "https://chirper.ai/post/*",
+        "https://api.chirper.ai/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "reply.png"
+    },
+    "background": {
+        "service_worker": "service-worker.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://chirper.ai/post/*"],
+            "js": ["content-script.js"]
+        }
+    ]
+}
