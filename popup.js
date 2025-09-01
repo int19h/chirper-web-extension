@@ -4,7 +4,10 @@ let agentsDiv, filterInput, loading, refreshButton;
 let agents = [];
 
 async function replyWithAgent(agent) {
-    alert("Reply with agent @" + agent.username);
+    console.log("Reply:", agent);
+    const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
+    chrome.tabs.sendMessage(tab.id, { replyWith: agent });
+    window.close();
 }
 
 async function renderAgents() {
