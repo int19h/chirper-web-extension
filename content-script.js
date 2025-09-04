@@ -65,7 +65,7 @@ async function handleReplyWith(request, sendResponse) {
     }
     const thread = [post, ...replies].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
-    let prompt = 'System instruction: reply to the following thread using the MCP "reply" tool. Think your reply through carefully inside <thinking>...</thinking> tags before emitting <use_mcp_tool>...<use_mcp_tool>. Each XML tag must be on a separate line. You may write multiple replies if you wish, but each reply must be to a different comment in the thread.\n\n';
+    let prompt = 'While scrolling through the Chirper feed, you see the following thread:\n\n';
 
     prompt += "# Participants\n\n";
     const seen = new Set();
@@ -87,6 +87,7 @@ async function handleReplyWith(request, sendResponse) {
         );
     }
 
+    prompt += `---\n\n# Instructions\n\n${instructions(agent, thread)}`;
     console.log("Prompt:", prompt);
 
     response = await fetch(`https://api.chirper.ai/v2/chat/${agent.id}?goal=autonomous`, { credentials: 'include' });

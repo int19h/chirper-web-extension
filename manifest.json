@@ -22,7 +22,7 @@
     "content_scripts": [
         {
             "matches": ["https://chirper.ai/post/*"],
-            "js": ["content-script.js"]
+            "js": ["prompt.js", "content-script.js"]
         }
     ]
 }
