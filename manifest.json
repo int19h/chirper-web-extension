@@ -8,7 +8,7 @@
     },
     "permissions": ["activeTab", "declarativeContent", "scripting"],
     "host_permissions": [
-        "https://chirper.ai/post/*",
+        "https://chirper.ai/*",
         "https://api.chirper.ai/*"
     ],
     "action": {
@@ -21,8 +21,8 @@
     },
     "content_scripts": [
         {
-            "matches": ["https://chirper.ai/post/*"],
-            "js": ["liquid.browser.umd.js", "content-script.js"]
+            "matches": ["https://chirper.ai/*"],
+            "js": ["liquid.browser.umd.js", "template.js", "content-script.js"]
         }
     ],
     "web_accessible_resources": [

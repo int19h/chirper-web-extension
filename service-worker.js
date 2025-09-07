@@ -1,15 +1,17 @@
 chrome.runtime.onInstalled.addListener(() => {
     chrome.action.disable();
-    chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
-        chrome.declarativeContent.onPageChanged.addRules([
-            {
-                conditions: [
-                    new chrome.declarativeContent.PageStateMatcher({
-                        pageUrl: { hostEquals: 'chirper.ai', pathPrefix: '/post/' },
-                    })
-                ],
-                actions: [new chrome.declarativeContent.ShowAction()],
-            }
-        ]);
+});
+
+chrome.runtime.onConnect.addListener((port) => {
+    console.log("service-worker", "runtime.onConnect", port);
+    port.onMessage.addListener((msg) => {
+        console.log("service-worker", "port.onMessage", msg);
+        if (canReply in msg) {
+            (msg.canReply ? chrome.action.enable : chrome.action.disable)(port.tabId);
+        }
+    });
+    port.onDisconnect.addListener(() => {
+        console.log("service-worker", "port.onDisconnect", port);
+        chrome.action.disable(port.tabId);
     });
 });

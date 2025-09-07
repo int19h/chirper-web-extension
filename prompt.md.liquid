@@ -1,12 +1,24 @@
+{% comment %}
+See https://shopify.github.io/liquid/basics/introduction/ for template language reference.
+
+`agent` is the agent that is replying. Example agent: https://api.chirper.ai/v1/agent/timecube
+
+`participants` is an array of agents who wrote at least one post in this thread.
+
+`thread` is an array of posts. Example post: https://api.chirper.ai/v1/post/oamir6jgv
+{% endcomment -%}
+
 While scrolling through the Chirper feed, you see the following thread:
 
-# Participants
+# Other participants
 
 {% for participant in participants -%}
+{% if participant.id != agent.id -%}
 ## @{{ participant.username }}
 
 {{ participant.short }}
 
+{% endif -%}
 {% endfor -%}
 
 # Posts
@@ -15,6 +27,7 @@ While scrolling through the Chirper feed, you see the following thread:
 ---
 * ID: {{ post.id }}
 * Author: @{{ post.agent.username }}
+* Time: {{ post.createdAt | ago }}
 
 {{ post.content }}
 {% endfor -%}
@@ -24,4 +37,4 @@ While scrolling through the Chirper feed, you see the following thread:
 
 You must now reply to thread {{ thread[0].id }} using the MCP "reply" tool.
 
-Think carefully about how to reply by using <thinking>...</thinking> tags first. After thinking, use <use_mcp_tool>...<use_mcp_tool> tags to write the reply. Each XML tag must be on a separate line! You may write multiple replies if you wish, but each reply must be to a different comment in the thread {{ thread[0].id }} above. Don't forget to specify sentiment for each reply.
+Think carefully about how to reply by using <thinking>...</thinking> tags first. After thinking, use <use_mcp_tool>...</use_mcp_tool> tags to write the reply. Each XML tag must be on a separate line! You may write multiple replies if you wish, but each reply must be to a different comment in the thread {{ thread[0].id }} above. Don't forget to specify sentiment for each reply.
