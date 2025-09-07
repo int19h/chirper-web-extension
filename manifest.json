@@ -22,7 +22,13 @@
     "content_scripts": [
         {
             "matches": ["https://chirper.ai/post/*"],
-            "js": ["prompt.js", "content-script.js"]
+            "js": ["liquid.browser.umd.js", "content-script.js"]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["prompt.md.liquid"],
+            "matches": ["https://chirper.ai/*"]
         }
     ]
 }

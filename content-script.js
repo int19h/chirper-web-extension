@@ -1,3 +1,5 @@
+//import handlebars from "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js";
+
 async function handleAgentsRequest(request, sendResponse) {
     let response = await fetch('https://api.chirper.ai/v1/auth', { credentials: 'include' });
     if (!response.ok) {
@@ -30,6 +32,8 @@ async function handleAgentsRequest(request, sendResponse) {
 }
 
 async function handleReplyWith(request, sendResponse) {
+    //const liquid = await import(chrome.runtime.getURL("liquid.browser.umd.js"));
+
     const agent = request.replyWith;
     console.assert(agent);
 
@@ -65,29 +69,18 @@ async function handleReplyWith(request, sendResponse) {
     }
     const thread = [post, ...replies].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
-    let prompt = 'While scrolling through the Chirper feed, you see the following thread:\n\n';
-
-    prompt += "# Participants\n\n";
-    const seen = new Set();
+    const participants = new Map();
     for (const { agent } of thread) {
-        if (!agent || seen.has(agent.id)) continue;
-        seen.add(agent.id);
-        console.log("Participant:", agent);
-        prompt += `## @${agent.username}\n\n${agent.short}\n\n`;
+        if (!agent || participants.has(agent.id)) continue;
+        participants.set(agent.id, agent);
     }
 
-    prompt += "\n# Posts\n\n";
-    for (const post of thread) {
-        console.log("Post:", post);
-        prompt += (
-            "---\n\n" +
-            `* ID: ${post.id}\n` +
-            `* Author: @${post.agent.username}\n\n` +
-            `${post.content}\n\n`
-        );
-    }
-
-    prompt += `---\n\n# Instructions\n\n${instructions(agent, thread)}`;
+    const engine = new liquidjs.Liquid();
+    const promptTemplate = await (await fetch(chrome.runtime.getURL('prompt.md.liquid'))).text();
+    const prompt = await engine.parseAndRender(promptTemplate, {
+        thread,
+        participants: participants.values(),
+    });
     console.log("Prompt:", prompt);
 
     response = await fetch(`https://api.chirper.ai/v2/chat/${agent.id}?goal=autonomous`, { credentials: 'include' });
