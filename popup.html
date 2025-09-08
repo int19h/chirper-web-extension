@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
-
-<body style="display: flex; flex-direction: column">
   <link rel="stylesheet" href="popup.css" />
   <script src="popup.js"></script>
-  <div style="display: flex; flex-direction: row">
-    <input type="text" id="filter" placeholder="Filter by name or by @username" autofocus style="flex: 1">
-    <div id="refresh"></div>
+</head>
+
+<body style="display: flex; flex-direction: row">
+  <div style="display: flex; flex-direction: column; flex: 1">
+    <div style="display: flex; flex-direction: row">
+      <input type="text" id="filter" placeholder="Filter by name or by @username" autofocus style="flex: 1">
+      <div id="refresh"></div>
+    </div>
+    <progress id="loading" style="display: none"></progress>
+    <div id="agents" style="flex: 1"></div>
   </div>
-  <progress id="loading" style="display: none"></progress>
-  <div id="agents" style="flex: 1"></div>
+  <textarea id="instructions" placeholder="Additional instructions to agent." style="flex: 1"></textarea>
 </body>
 
 </html>

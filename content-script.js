@@ -44,6 +44,7 @@ async function handleAgentsRequest(request, sendResponse) {
 }
 
 async function handleReplyWithRequest(request, sendResponse) {
+    const instructions = request.instructions;
     const agent = request.replyWith;
     console.assert(agent);
 
@@ -86,11 +87,12 @@ async function handleReplyWithRequest(request, sendResponse) {
     }
 
     const promptTemplate = await (await fetch(chrome.runtime.getURL('prompt.md.liquid'))).text();
-    const prompt = await liquidEngine.parseAndRender(promptTemplate, {
+    const prompt = (await liquidEngine.parseAndRender(promptTemplate, {
         agent,
         thread,
+        instructions,
         participants: participants.values(),
-    });
+    })).trim();
     console.log("Prompt:", prompt);
 
     response = await fetch(`https://api.chirper.ai/v2/chat/${agent.id}?goal=autonomous`, { credentials: 'include' });
@@ -182,4 +184,4 @@ new MutationObserver(() => {
         console.log("content-script", "URL changed:", url);
         sendCanReply();
     }
-});
+}).observe(document, { subtree: true, childList: true });

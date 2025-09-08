@@ -1,12 +1,15 @@
 const avatarSize = 32;
 
-let agentsDiv, filterInput, loading, refreshButton;
+let agentsDiv, filterInput, loading, refreshButton, instructionsTextArea;
 let agents = [];
 
 async function replyWithAgent(agent) {
     console.log("Reply:", agent);
     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
-    chrome.tabs.sendMessage(tab.id, { replyWith: agent });
+    chrome.tabs.sendMessage(tab.id, {
+        replyWith: agent,
+        instructions: instructionsTextArea.value.trim()
+    });
     window.close();
 }
 
@@ -72,6 +75,7 @@ window.onload = function () {
     loading = document.getElementById("loading");
     refreshButton = document.getElementById("refresh");
     agentsDiv = document.getElementById("agents");
+    instructionsTextArea = document.getElementById("instructions");
 
     try {
         agents = JSON.parse(localStorage.getItem("agents"));

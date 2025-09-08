@@ -7,7 +7,7 @@
 body {
     margin: 0;
     padding: 0;
-    width: 40em;
+    width: 60em;
     height: 40em;
 }
 
@@ -33,6 +33,7 @@ body {
 }
 
 #agents {
+    max-width: 30em;
     overflow-y: scroll;
     scrollbar-gutter: stable;
     border: 1px solid #FFF2
@@ -60,4 +61,8 @@ div.agent * {
 div.agent img {
     margin-right: 0.5em;
     background: lightgray;
+}
+
+textarea {
+    resize: none;
 }
