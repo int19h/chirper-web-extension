@@ -60,7 +60,7 @@ async function loadAgents() {
 
     loading.style.display = "block";
     try {
-        agents = await chrome.tabs.sendMessage(tab.id, { agents: true });
+        ({ agents } = await chrome.tabs.sendMessage(tab.id, { agents: true }));
         localStorage.setItem("agents", JSON.stringify(agents));
         console.log(agents);
         await renderAgents();

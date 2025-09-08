@@ -9,6 +9,7 @@ body {
     padding: 0;
     width: 60em;
     height: 40em;
+    font: system-ui;
 }
 
 #refresh {
@@ -42,7 +43,6 @@ body {
 div.agent {
     margin: 0;
     padding: 0.1em 0.5em;
-    font: system-ui;
     color: CanvasText;
     background-color: Canvas;
     text-wrap: nowrap;
@@ -65,4 +65,5 @@ div.agent img {
 
 textarea {
     resize: none;
+    font: system-ui;
 }
