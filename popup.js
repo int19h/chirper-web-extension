@@ -1,48 +1,27 @@
 const avatarSize = 32;
 
-let agentsDiv, filterInput, loading, refreshButton, instructionsTextArea;
+let agentsDiv, filterInput, progress, refreshButton, instructionsTextArea;
 let agents = [];
 
-async function replyWithAgent(agent) {
-    console.log("Reply:", agent);
-    const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
-    const loader = document.getElementById(`loader-${agent.id}`);
-    loader.style.visibility = "visible";
+async function loadAgents() {
+    const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+    console.log(tab);
+    progress.classList.remove("hidden");
     try {
-        const result = await chrome.tabs.sendMessage(tab.id, {
-            replyWith: agent,
-            instructions: instructionsTextArea.value.trim()
-        });
-        if (result.error) {
-            alert("Error: " + result.error);
-        }
+        ({ agents } = await chrome.tabs.sendMessage(tab.id, { agents: true }));
+        localStorage.setItem("agents", JSON.stringify(agents));
+        console.log(agents);
+        renderAgents();
     } finally {
-        loader.style.visibility = "hidden";
+        progress.classList.add("hidden");
     }
 }
 
-async function renderAgents() {
-    // Filter agents by name or by @username.
-    let displayedAgents = agents;
-    let filter = filterInput.value.toLowerCase().toUpperCase();
-    if (filter) {
-        if (filter.startsWith("@")) {
-            filter = filter.slice(1);
-            displayedAgents = agents.filter(agent =>
-                agent.username.toLowerCase().toUpperCase().startsWith(filter)
-            );
-        } else {
-            displayedAgents = agents.filter(agent =>
-                agent.name.toLowerCase().toUpperCase().includes(filter) ||
-                agent.username.toLowerCase().toUpperCase().includes(filter)
-            );
-        }
-    }
-
-    // Render agents as list with highlightable items.
+function renderAgents() {
     agentsDiv.innerHTML = "";
-    for (const agent of displayedAgents) {
+    for (const agent of agents) {
         const div = document.createElement("div");
+        div.id = `agent-${agent.id}`;
         div.onclick = () => replyWithAgent(agent);
         div.classList.add("agent");
         agentsDiv.appendChild(div);
@@ -75,28 +54,57 @@ async function renderAgents() {
         nameDiv.textContent = agent.name;
         div.append(nameDiv);
     }
+    filterAgents();
 }
 
-async function loadAgents() {
-    agents = [];
-    const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
-    console.log(tab);
-
-    loading.style.visibility = "visible";
-    try {
-        ({ agents } = await chrome.tabs.sendMessage(tab.id, { agents: true }));
-        localStorage.setItem("agents", JSON.stringify(agents));
-        console.log(agents);
-        await renderAgents();
-    } finally {
-        loading.style.visibility = "collapsed";
+function filterAgents() {
+    let displayedAgents = agents;
+    let filter = filterInput.value.toLowerCase().toUpperCase();
+    if (filter) {
+        if (filter.startsWith("@")) {
+            filter = filter.slice(1);
+            displayedAgents = agents.filter(agent =>
+                agent.username.toLowerCase().toUpperCase().startsWith(filter)
+            );
+        } else {
+            displayedAgents = agents.filter(agent =>
+                agent.name.toLowerCase().toUpperCase().includes(filter) ||
+                agent.username.toLowerCase().toUpperCase().includes(filter)
+            );
+        }
+    }
+    console.log("Filter:", displayedAgents);
+    for (const agent of agents) {
+        const div = document.getElementById(`agent-${agent.id}`);
+        div.classList.add("hidden");
+    }
+    for (const agent of displayedAgents) {
+        const div = document.getElementById(`agent-${agent.id}`);
+        div.classList.remove("hidden");
     }
 }
 
+async function replyWithAgent(agent) {
+    console.log("Reply:", agent);
+    const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+    const loader = document.getElementById(`loader-${agent.id}`);
+    loader.style.visibility = "visible";
+    try {
+        const result = await chrome.tabs.sendMessage(tab.id, {
+            replyWith: agent,
+            instructions: instructionsTextArea.value.trim()
+        });
+        if (result.error) {
+            alert("Error: " + result.error);
+        }
+    } finally {
+        loader.style.visibility = "hidden";
+    }
+}
 
 window.onload = function () {
     filterInput = document.getElementById("filter");
-    loading = document.getElementById("loading");
+    progress = document.getElementById("progress");
     refreshButton = document.getElementById("refresh");
     agentsDiv = document.getElementById("agents");
     instructionsTextArea = document.getElementById("instructions");
@@ -117,7 +125,7 @@ window.onload = function () {
         return () => {
             clearTimeout(timeout);
             timeout = setTimeout(() => {
-                renderAgents();
+                filterAgents();
             }, 100);
         };
     })();
