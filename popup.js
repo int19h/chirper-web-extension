@@ -6,10 +6,13 @@ let agents = [];
 async function replyWithAgent(agent) {
     console.log("Reply:", agent);
     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
-    chrome.tabs.sendMessage(tab.id, {
+    const result = await chrome.tabs.sendMessage(tab.id, {
         replyWith: agent,
         instructions: instructionsTextArea.value.trim()
     });
+    if (result.error) {
+        alert("Error: " + result.error);
+    }
     window.close();
 }
 

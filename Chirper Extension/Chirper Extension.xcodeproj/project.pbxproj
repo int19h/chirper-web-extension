@@ -1,0 +1,1025 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		87DBD68E2E6ECAF100C2392A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DBD68D2E6ECAF100C2392A /* AppDelegate.swift */; };
+		87DBD6902E6ECAF100C2392A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DBD68F2E6ECAF100C2392A /* SceneDelegate.swift */; };
+		87DBD6932E6ECAF100C2392A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6912E6ECAF100C2392A /* LaunchScreen.storyboard */; };
+		87DBD6962E6ECAF100C2392A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6942E6ECAF100C2392A /* Main.storyboard */; };
+		87DBD69F2E6ECAF100C2392A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DBD69E2E6ECAF100C2392A /* AppDelegate.swift */; };
+		87DBD6A22E6ECAF100C2392A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6A02E6ECAF100C2392A /* Main.storyboard */; };
+		87DBD6AA2E6ECAF100C2392A /* Chirper Extension Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 87DBD6A92E6ECAF100C2392A /* Chirper Extension Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		87DBD6B42E6ECAF100C2392A /* Chirper Extension Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 87DBD6B32E6ECAF100C2392A /* Chirper Extension Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		87DBD6BA2E6ECAF100C2392A /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD67D2E6ECAF000C2392A /* Main.html */; };
+		87DBD6BB2E6ECAF100C2392A /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD67D2E6ECAF000C2392A /* Main.html */; };
+		87DBD6BC2E6ECAF100C2392A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD67F2E6ECAF000C2392A /* Icon.png */; };
+		87DBD6BD2E6ECAF100C2392A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD67F2E6ECAF000C2392A /* Icon.png */; };
+		87DBD6BE2E6ECAF100C2392A /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6802E6ECAF000C2392A /* Style.css */; };
+		87DBD6BF2E6ECAF100C2392A /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6802E6ECAF000C2392A /* Style.css */; };
+		87DBD6C02E6ECAF100C2392A /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6812E6ECAF000C2392A /* Script.js */; };
+		87DBD6C12E6ECAF100C2392A /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6812E6ECAF000C2392A /* Script.js */; };
+		87DBD6C22E6ECAF100C2392A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DBD6822E6ECAF000C2392A /* ViewController.swift */; };
+		87DBD6C32E6ECAF100C2392A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DBD6822E6ECAF000C2392A /* ViewController.swift */; };
+		87DBD6C42E6ECAF100C2392A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6832E6ECAF100C2392A /* Assets.xcassets */; };
+		87DBD6C52E6ECAF100C2392A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6832E6ECAF100C2392A /* Assets.xcassets */; };
+		87DBD6C62E6ECAF100C2392A /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DBD6852E6ECAF100C2392A /* SafariWebExtensionHandler.swift */; };
+		87DBD6C72E6ECAF100C2392A /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DBD6852E6ECAF100C2392A /* SafariWebExtensionHandler.swift */; };
+		87DBD6E72E6ECAF200C2392A /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6D92E6ECAF200C2392A /* popup.js */; };
+		87DBD6E82E6ECAF200C2392A /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DA2E6ECAF200C2392A /* popup.html */; };
+		87DBD6E92E6ECAF200C2392A /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DB2E6ECAF200C2392A /* reply.png */; };
+		87DBD6EA2E6ECAF200C2392A /* agents.json in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DC2E6ECAF200C2392A /* agents.json */; };
+		87DBD6EB2E6ECAF200C2392A /* liquid.browser.umd.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DD2E6ECAF200C2392A /* liquid.browser.umd.js */; };
+		87DBD6EC2E6ECAF200C2392A /* reload.svg in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DE2E6ECAF200C2392A /* reload.svg */; };
+		87DBD6ED2E6ECAF200C2392A /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DF2E6ECAF200C2392A /* manifest.json */; };
+		87DBD6EE2E6ECAF200C2392A /* prompt.md.liquid in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E02E6ECAF200C2392A /* prompt.md.liquid */; };
+		87DBD6EF2E6ECAF200C2392A /* content-script.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E12E6ECAF200C2392A /* content-script.js */; };
+		87DBD6F02E6ECAF200C2392A /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E22E6ECAF200C2392A /* popup.css */; };
+		87DBD6F12E6ECAF200C2392A /* service-worker.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E32E6ECAF200C2392A /* service-worker.js */; };
+		87DBD6F22E6ECAF200C2392A /* reload-hover.svg in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E42E6ECAF200C2392A /* reload-hover.svg */; };
+		87DBD6F32E6ECAF200C2392A /* template.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E52E6ECAF200C2392A /* template.js */; };
+		87DBD6F52E6ECAF200C2392A /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6D92E6ECAF200C2392A /* popup.js */; };
+		87DBD6F62E6ECAF200C2392A /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DA2E6ECAF200C2392A /* popup.html */; };
+		87DBD6F72E6ECAF200C2392A /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DB2E6ECAF200C2392A /* reply.png */; };
+		87DBD6F82E6ECAF200C2392A /* agents.json in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DC2E6ECAF200C2392A /* agents.json */; };
+		87DBD6F92E6ECAF200C2392A /* liquid.browser.umd.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DD2E6ECAF200C2392A /* liquid.browser.umd.js */; };
+		87DBD6FA2E6ECAF200C2392A /* reload.svg in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DE2E6ECAF200C2392A /* reload.svg */; };
+		87DBD6FB2E6ECAF200C2392A /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6DF2E6ECAF200C2392A /* manifest.json */; };
+		87DBD6FC2E6ECAF200C2392A /* prompt.md.liquid in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E02E6ECAF200C2392A /* prompt.md.liquid */; };
+		87DBD6FD2E6ECAF200C2392A /* content-script.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E12E6ECAF200C2392A /* content-script.js */; };
+		87DBD6FE2E6ECAF200C2392A /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E22E6ECAF200C2392A /* popup.css */; };
+		87DBD6FF2E6ECAF200C2392A /* service-worker.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E32E6ECAF200C2392A /* service-worker.js */; };
+		87DBD7002E6ECAF200C2392A /* reload-hover.svg in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E42E6ECAF200C2392A /* reload-hover.svg */; };
+		87DBD7012E6ECAF200C2392A /* template.js in Resources */ = {isa = PBXBuildFile; fileRef = 87DBD6E52E6ECAF200C2392A /* template.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87DBD6AB2E6ECAF100C2392A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87DBD6772E6ECAF000C2392A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87DBD6A82E6ECAF100C2392A;
+			remoteInfo = "Chirper Extension Extension (iOS)";
+		};
+		87DBD6B52E6ECAF100C2392A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87DBD6772E6ECAF000C2392A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87DBD6B22E6ECAF100C2392A;
+			remoteInfo = "Chirper Extension Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		87DBD6CD2E6ECAF100C2392A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				87DBD6AA2E6ECAF100C2392A /* Chirper Extension Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87DBD6D42E6ECAF100C2392A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				87DBD6B42E6ECAF100C2392A /* Chirper Extension Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		87DBD67E2E6ECAF000C2392A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		87DBD67F2E6ECAF000C2392A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		87DBD6802E6ECAF000C2392A /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		87DBD6812E6ECAF000C2392A /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		87DBD6822E6ECAF000C2392A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		87DBD6832E6ECAF100C2392A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		87DBD6852E6ECAF100C2392A /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		87DBD68A2E6ECAF100C2392A /* Chirper Extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chirper Extension.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87DBD68D2E6ECAF100C2392A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		87DBD68F2E6ECAF100C2392A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		87DBD6922E6ECAF100C2392A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		87DBD6952E6ECAF100C2392A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		87DBD6972E6ECAF100C2392A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87DBD69C2E6ECAF100C2392A /* Chirper Extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chirper Extension.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87DBD69E2E6ECAF100C2392A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		87DBD6A12E6ECAF100C2392A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		87DBD6A32E6ECAF100C2392A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87DBD6A42E6ECAF100C2392A /* Chirper Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chirper Extension.entitlements"; sourceTree = "<group>"; };
+		87DBD6A92E6ECAF100C2392A /* Chirper Extension Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Chirper Extension Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87DBD6AE2E6ECAF100C2392A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87DBD6B32E6ECAF100C2392A /* Chirper Extension Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Chirper Extension Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87DBD6B82E6ECAF100C2392A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87DBD6B92E6ECAF100C2392A /* Chirper Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chirper Extension.entitlements"; sourceTree = "<group>"; };
+		87DBD6D92E6ECAF200C2392A /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.js; path = ../../popup.js; sourceTree = "<group>"; };
+		87DBD6DA2E6ECAF200C2392A /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = ../../popup.html; sourceTree = "<group>"; };
+		87DBD6DB2E6ECAF200C2392A /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reply.png; path = ../../reply.png; sourceTree = "<group>"; };
+		87DBD6DC2E6ECAF200C2392A /* agents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = agents.json; path = ../../agents.json; sourceTree = "<group>"; };
+		87DBD6DD2E6ECAF200C2392A /* liquid.browser.umd.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = liquid.browser.umd.js; path = ../../liquid.browser.umd.js; sourceTree = "<group>"; };
+		87DBD6DE2E6ECAF200C2392A /* reload.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = reload.svg; path = ../../reload.svg; sourceTree = "<group>"; };
+		87DBD6DF2E6ECAF200C2392A /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../manifest.json; sourceTree = "<group>"; };
+		87DBD6E02E6ECAF200C2392A /* prompt.md.liquid */ = {isa = PBXFileReference; lastKnownFileType = text; name = prompt.md.liquid; path = ../../prompt.md.liquid; sourceTree = "<group>"; };
+		87DBD6E12E6ECAF200C2392A /* content-script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "content-script.js"; path = "../../content-script.js"; sourceTree = "<group>"; };
+		87DBD6E22E6ECAF200C2392A /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = popup.css; path = ../../popup.css; sourceTree = "<group>"; };
+		87DBD6E32E6ECAF200C2392A /* service-worker.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "service-worker.js"; path = "../../service-worker.js"; sourceTree = "<group>"; };
+		87DBD6E42E6ECAF200C2392A /* reload-hover.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "reload-hover.svg"; path = "../../reload-hover.svg"; sourceTree = "<group>"; };
+		87DBD6E52E6ECAF200C2392A /* template.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = template.js; path = ../../template.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		87DBD6872E6ECAF100C2392A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87DBD6992E6ECAF100C2392A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87DBD6A62E6ECAF100C2392A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87DBD6B02E6ECAF100C2392A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		87DBD6762E6ECAF000C2392A = {
+			isa = PBXGroup;
+			children = (
+				87DBD67B2E6ECAF000C2392A /* Shared (App) */,
+				87DBD6842E6ECAF100C2392A /* Shared (Extension) */,
+				87DBD68C2E6ECAF100C2392A /* iOS (App) */,
+				87DBD69D2E6ECAF100C2392A /* macOS (App) */,
+				87DBD6AD2E6ECAF100C2392A /* iOS (Extension) */,
+				87DBD6B72E6ECAF100C2392A /* macOS (Extension) */,
+				87DBD68B2E6ECAF100C2392A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		87DBD67B2E6ECAF000C2392A /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				87DBD6822E6ECAF000C2392A /* ViewController.swift */,
+				87DBD6832E6ECAF100C2392A /* Assets.xcassets */,
+				87DBD67C2E6ECAF000C2392A /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		87DBD67C2E6ECAF000C2392A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				87DBD67D2E6ECAF000C2392A /* Main.html */,
+				87DBD67F2E6ECAF000C2392A /* Icon.png */,
+				87DBD6802E6ECAF000C2392A /* Style.css */,
+				87DBD6812E6ECAF000C2392A /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		87DBD6842E6ECAF100C2392A /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				87DBD6D82E6ECAF200C2392A /* Resources */,
+				87DBD6852E6ECAF100C2392A /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		87DBD68B2E6ECAF100C2392A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87DBD68A2E6ECAF100C2392A /* Chirper Extension.app */,
+				87DBD69C2E6ECAF100C2392A /* Chirper Extension.app */,
+				87DBD6A92E6ECAF100C2392A /* Chirper Extension Extension.appex */,
+				87DBD6B32E6ECAF100C2392A /* Chirper Extension Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87DBD68C2E6ECAF100C2392A /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				87DBD68D2E6ECAF100C2392A /* AppDelegate.swift */,
+				87DBD68F2E6ECAF100C2392A /* SceneDelegate.swift */,
+				87DBD6912E6ECAF100C2392A /* LaunchScreen.storyboard */,
+				87DBD6942E6ECAF100C2392A /* Main.storyboard */,
+				87DBD6972E6ECAF100C2392A /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		87DBD69D2E6ECAF100C2392A /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				87DBD69E2E6ECAF100C2392A /* AppDelegate.swift */,
+				87DBD6A02E6ECAF100C2392A /* Main.storyboard */,
+				87DBD6A32E6ECAF100C2392A /* Info.plist */,
+				87DBD6A42E6ECAF100C2392A /* Chirper Extension.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		87DBD6AD2E6ECAF100C2392A /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				87DBD6AE2E6ECAF100C2392A /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		87DBD6B72E6ECAF100C2392A /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				87DBD6B82E6ECAF100C2392A /* Info.plist */,
+				87DBD6B92E6ECAF100C2392A /* Chirper Extension.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		87DBD6D82E6ECAF200C2392A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				87DBD6D92E6ECAF200C2392A /* popup.js */,
+				87DBD6DA2E6ECAF200C2392A /* popup.html */,
+				87DBD6DB2E6ECAF200C2392A /* reply.png */,
+				87DBD6DC2E6ECAF200C2392A /* agents.json */,
+				87DBD6DD2E6ECAF200C2392A /* liquid.browser.umd.js */,
+				87DBD6DE2E6ECAF200C2392A /* reload.svg */,
+				87DBD6DF2E6ECAF200C2392A /* manifest.json */,
+				87DBD6E02E6ECAF200C2392A /* prompt.md.liquid */,
+				87DBD6E12E6ECAF200C2392A /* content-script.js */,
+				87DBD6E22E6ECAF200C2392A /* popup.css */,
+				87DBD6E32E6ECAF200C2392A /* service-worker.js */,
+				87DBD6E42E6ECAF200C2392A /* reload-hover.svg */,
+				87DBD6E52E6ECAF200C2392A /* template.js */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		87DBD6892E6ECAF100C2392A /* Chirper Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87DBD6CE2E6ECAF100C2392A /* Build configuration list for PBXNativeTarget "Chirper Extension (iOS)" */;
+			buildPhases = (
+				87DBD6862E6ECAF100C2392A /* Sources */,
+				87DBD6872E6ECAF100C2392A /* Frameworks */,
+				87DBD6882E6ECAF100C2392A /* Resources */,
+				87DBD6CD2E6ECAF100C2392A /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87DBD6AC2E6ECAF100C2392A /* PBXTargetDependency */,
+			);
+			name = "Chirper Extension (iOS)";
+			packageProductDependencies = (
+			);
+			productName = "Chirper Extension (iOS)";
+			productReference = 87DBD68A2E6ECAF100C2392A /* Chirper Extension.app */;
+			productType = "com.apple.product-type.application";
+		};
+		87DBD69B2E6ECAF100C2392A /* Chirper Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87DBD6D52E6ECAF100C2392A /* Build configuration list for PBXNativeTarget "Chirper Extension (macOS)" */;
+			buildPhases = (
+				87DBD6982E6ECAF100C2392A /* Sources */,
+				87DBD6992E6ECAF100C2392A /* Frameworks */,
+				87DBD69A2E6ECAF100C2392A /* Resources */,
+				87DBD6D42E6ECAF100C2392A /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87DBD6B62E6ECAF100C2392A /* PBXTargetDependency */,
+			);
+			name = "Chirper Extension (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "Chirper Extension (macOS)";
+			productReference = 87DBD69C2E6ECAF100C2392A /* Chirper Extension.app */;
+			productType = "com.apple.product-type.application";
+		};
+		87DBD6A82E6ECAF100C2392A /* Chirper Extension Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87DBD6CA2E6ECAF100C2392A /* Build configuration list for PBXNativeTarget "Chirper Extension Extension (iOS)" */;
+			buildPhases = (
+				87DBD6A52E6ECAF100C2392A /* Sources */,
+				87DBD6A62E6ECAF100C2392A /* Frameworks */,
+				87DBD6A72E6ECAF100C2392A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Chirper Extension Extension (iOS)";
+			packageProductDependencies = (
+			);
+			productName = "Chirper Extension Extension (iOS)";
+			productReference = 87DBD6A92E6ECAF100C2392A /* Chirper Extension Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		87DBD6B22E6ECAF100C2392A /* Chirper Extension Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87DBD6D12E6ECAF100C2392A /* Build configuration list for PBXNativeTarget "Chirper Extension Extension (macOS)" */;
+			buildPhases = (
+				87DBD6AF2E6ECAF100C2392A /* Sources */,
+				87DBD6B02E6ECAF100C2392A /* Frameworks */,
+				87DBD6B12E6ECAF100C2392A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Chirper Extension Extension (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "Chirper Extension Extension (macOS)";
+			productReference = 87DBD6B32E6ECAF100C2392A /* Chirper Extension Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		87DBD6772E6ECAF000C2392A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					87DBD6892E6ECAF100C2392A = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					87DBD69B2E6ECAF100C2392A = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					87DBD6A82E6ECAF100C2392A = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					87DBD6B22E6ECAF100C2392A = {
+						CreatedOnToolsVersion = 16.4;
+					};
+				};
+			};
+			buildConfigurationList = 87DBD67A2E6ECAF000C2392A /* Build configuration list for PBXProject "Chirper Extension" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 87DBD6762E6ECAF000C2392A;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 87DBD68B2E6ECAF100C2392A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87DBD6892E6ECAF100C2392A /* Chirper Extension (iOS) */,
+				87DBD69B2E6ECAF100C2392A /* Chirper Extension (macOS) */,
+				87DBD6A82E6ECAF100C2392A /* Chirper Extension Extension (iOS) */,
+				87DBD6B22E6ECAF100C2392A /* Chirper Extension Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		87DBD6882E6ECAF100C2392A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87DBD6BC2E6ECAF100C2392A /* Icon.png in Resources */,
+				87DBD6932E6ECAF100C2392A /* LaunchScreen.storyboard in Resources */,
+				87DBD6BA2E6ECAF100C2392A /* Main.html in Resources */,
+				87DBD6C02E6ECAF100C2392A /* Script.js in Resources */,
+				87DBD6C42E6ECAF100C2392A /* Assets.xcassets in Resources */,
+				87DBD6962E6ECAF100C2392A /* Main.storyboard in Resources */,
+				87DBD6BE2E6ECAF100C2392A /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87DBD69A2E6ECAF100C2392A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87DBD6BD2E6ECAF100C2392A /* Icon.png in Resources */,
+				87DBD6BF2E6ECAF100C2392A /* Style.css in Resources */,
+				87DBD6A22E6ECAF100C2392A /* Main.storyboard in Resources */,
+				87DBD6C12E6ECAF100C2392A /* Script.js in Resources */,
+				87DBD6C52E6ECAF100C2392A /* Assets.xcassets in Resources */,
+				87DBD6BB2E6ECAF100C2392A /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87DBD6A72E6ECAF100C2392A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87DBD6FF2E6ECAF200C2392A /* service-worker.js in Resources */,
+				87DBD6FE2E6ECAF200C2392A /* popup.css in Resources */,
+				87DBD6F52E6ECAF200C2392A /* popup.js in Resources */,
+				87DBD6FB2E6ECAF200C2392A /* manifest.json in Resources */,
+				87DBD6F82E6ECAF200C2392A /* agents.json in Resources */,
+				87DBD6F72E6ECAF200C2392A /* reply.png in Resources */,
+				87DBD7012E6ECAF200C2392A /* template.js in Resources */,
+				87DBD6FA2E6ECAF200C2392A /* reload.svg in Resources */,
+				87DBD6FD2E6ECAF200C2392A /* content-script.js in Resources */,
+				87DBD6F62E6ECAF200C2392A /* popup.html in Resources */,
+				87DBD6F92E6ECAF200C2392A /* liquid.browser.umd.js in Resources */,
+				87DBD7002E6ECAF200C2392A /* reload-hover.svg in Resources */,
+				87DBD6FC2E6ECAF200C2392A /* prompt.md.liquid in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87DBD6B12E6ECAF100C2392A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87DBD6F12E6ECAF200C2392A /* service-worker.js in Resources */,
+				87DBD6F02E6ECAF200C2392A /* popup.css in Resources */,
+				87DBD6E72E6ECAF200C2392A /* popup.js in Resources */,
+				87DBD6ED2E6ECAF200C2392A /* manifest.json in Resources */,
+				87DBD6EA2E6ECAF200C2392A /* agents.json in Resources */,
+				87DBD6E92E6ECAF200C2392A /* reply.png in Resources */,
+				87DBD6F32E6ECAF200C2392A /* template.js in Resources */,
+				87DBD6EC2E6ECAF200C2392A /* reload.svg in Resources */,
+				87DBD6EF2E6ECAF200C2392A /* content-script.js in Resources */,
+				87DBD6E82E6ECAF200C2392A /* popup.html in Resources */,
+				87DBD6EB2E6ECAF200C2392A /* liquid.browser.umd.js in Resources */,
+				87DBD6F22E6ECAF200C2392A /* reload-hover.svg in Resources */,
+				87DBD6EE2E6ECAF200C2392A /* prompt.md.liquid in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87DBD6862E6ECAF100C2392A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87DBD6C22E6ECAF100C2392A /* ViewController.swift in Sources */,
+				87DBD68E2E6ECAF100C2392A /* AppDelegate.swift in Sources */,
+				87DBD6902E6ECAF100C2392A /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87DBD6982E6ECAF100C2392A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87DBD6C32E6ECAF100C2392A /* ViewController.swift in Sources */,
+				87DBD69F2E6ECAF100C2392A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87DBD6A52E6ECAF100C2392A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87DBD6C62E6ECAF100C2392A /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87DBD6AF2E6ECAF100C2392A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87DBD6C72E6ECAF100C2392A /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87DBD6AC2E6ECAF100C2392A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87DBD6A82E6ECAF100C2392A /* Chirper Extension Extension (iOS) */;
+			targetProxy = 87DBD6AB2E6ECAF100C2392A /* PBXContainerItemProxy */;
+		};
+		87DBD6B62E6ECAF100C2392A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87DBD6B22E6ECAF100C2392A /* Chirper Extension Extension (macOS) */;
+			targetProxy = 87DBD6B52E6ECAF100C2392A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		87DBD67D2E6ECAF000C2392A /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87DBD67E2E6ECAF000C2392A /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		87DBD6912E6ECAF100C2392A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87DBD6922E6ECAF100C2392A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		87DBD6942E6ECAF100C2392A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87DBD6952E6ECAF100C2392A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		87DBD6A02E6ECAF100C2392A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87DBD6A12E6ECAF100C2392A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		87DBD6C82E6ECAF100C2392A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = KGMD2XY555;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		87DBD6C92E6ECAF100C2392A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = KGMD2XY555;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		87DBD6CB2E6ECAF100C2392A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Chirper Extension Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.int19h.chirper-extension.extension";
+				PRODUCT_NAME = "Chirper Extension Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		87DBD6CC2E6ECAF100C2392A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Chirper Extension Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.int19h.chirper-extension.extension";
+				PRODUCT_NAME = "Chirper Extension Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87DBD6CF2E6ECAF100C2392A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Chirper Extension";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.int19h.chirper-extension";
+				PRODUCT_NAME = "Chirper Extension";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		87DBD6D02E6ECAF100C2392A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Chirper Extension";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.int19h.chirper-extension";
+				PRODUCT_NAME = "Chirper Extension";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87DBD6D22E6ECAF100C2392A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Chirper Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Chirper Extension Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.int19h.chirper-extension.extension";
+				PRODUCT_NAME = "Chirper Extension Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		87DBD6D32E6ECAF100C2392A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Chirper Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Chirper Extension Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.int19h.chirper-extension.extension";
+				PRODUCT_NAME = "Chirper Extension Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		87DBD6D62E6ECAF100C2392A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Chirper Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Chirper Extension";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.int19h.chirper-extension";
+				PRODUCT_NAME = "Chirper Extension";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		87DBD6D72E6ECAF100C2392A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Chirper Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Chirper Extension";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.int19h.chirper-extension";
+				PRODUCT_NAME = "Chirper Extension";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		87DBD67A2E6ECAF000C2392A /* Build configuration list for PBXProject "Chirper Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87DBD6C82E6ECAF100C2392A /* Debug */,
+				87DBD6C92E6ECAF100C2392A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87DBD6CA2E6ECAF100C2392A /* Build configuration list for PBXNativeTarget "Chirper Extension Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87DBD6CB2E6ECAF100C2392A /* Debug */,
+				87DBD6CC2E6ECAF100C2392A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87DBD6CE2E6ECAF100C2392A /* Build configuration list for PBXNativeTarget "Chirper Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87DBD6CF2E6ECAF100C2392A /* Debug */,
+				87DBD6D02E6ECAF100C2392A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87DBD6D12E6ECAF100C2392A /* Build configuration list for PBXNativeTarget "Chirper Extension Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87DBD6D22E6ECAF100C2392A /* Debug */,
+				87DBD6D32E6ECAF100C2392A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87DBD6D52E6ECAF100C2392A /* Build configuration list for PBXNativeTarget "Chirper Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87DBD6D62E6ECAF100C2392A /* Debug */,
+				87DBD6D72E6ECAF100C2392A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 87DBD6772E6ECAF000C2392A /* Project object */;
+}

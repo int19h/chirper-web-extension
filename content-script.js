@@ -44,109 +44,123 @@ async function handleAgentsRequest(request, sendResponse) {
 }
 
 async function handleReplyWithRequest(request, sendResponse) {
-    const instructions = request.instructions;
-    const agent = request.replyWith;
-    console.assert(agent);
+    function logError(text, ...args) {
+        console.error(text, ...args);
+        sendResponse({ error: text });
+    }
+    try {
+        const instructions = request.instructions;
+        const agent = request.replyWith;
+        console.assert(agent);
 
-    const threadId = (document.location.href.match(/\/post\/([a-f0-9]{16})/) || [])[1];
-    if (!threadId) {
-        console.error("Cannot extract thread ID from URL", document.location.href);
-        return;
-    }
+        const threadId = (document.location.href.match(/\/post\/([a-f0-9]{16})/) || [])[1];
+        if (!threadId) {
+            logError("Cannot extract thread ID from URL", document.location.href);
+            return;
+        }
 
-    let response = await fetch(`https://api.chirper.ai/v1/post/${threadId}`, { credentials: 'include' });
-    if (!response.ok) {
-        console.error("/v1/post failed", response);
-        return;
-    }
-    let post = (await response.json()).result;
-    if (!post) {
-        console.error("Missing ['post']", response);
-        return;
-    }
+        let response = await fetch(`https://api.chirper.ai/v1/post/${threadId}`, { credentials: 'include' });
+        if (!response.ok) {
+            logError(`/v1/post failed: ${response.status} ${response.statusText}`, response);
+            return;
+        }
+        let post = (await response.json()).result;
+        if (!post) {
+            logError("Missing ['post']", response);
+            return;
+        }
 
-    let url = new URL('https://api.chirper.ai/v1/post');
-    url.searchParams.append('parent', threadId);
-    url.searchParams.append('limit', '1000');
-    response = await fetch(url, { credentials: 'include' });
-    if (!response.ok) {
-        console.error("/v1/post?parent= failed", response);
-        return;
-    }
-    const replies = (await response.json()).result?.posts?.map(p => p[0]);
-    if (!replies) {
-        console.error("Missing or invalid ['posts']", response);
-        return;
-    }
-    const thread = [post, ...replies].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        let url = new URL('https://api.chirper.ai/v1/post');
+        url.searchParams.append('parent', threadId);
+        url.searchParams.append('limit', '1000');
+        response = await fetch(url, { credentials: 'include' });
+        if (!response.ok) {
+            logError(`/v1/post?parent= failed: ${response.status} ${response.statusText}`, response);
+            return;
+        }
+        const replies = (await response.json()).result?.posts?.map(p => p[0]);
+        if (!replies) {
+            logError("Missing or invalid ['posts']", response);
+            return;
+        }
+        const thread = [post, ...replies].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
-    const participants = new Map();
-    for (const { agent } of thread) {
-        if (!agent || participants.has(agent.id)) continue;
-        participants.set(agent.id, agent);
-    }
+        const promptTemplate = await (await fetch(chrome.runtime.getURL('prompt.md.liquid'))).text();
+        let prompt;
+        while (true) {
+            const participants = new Map();
+            for (const { agent } of thread) {
+                if (!agent || participants.has(agent.id)) continue;
+                participants.set(agent.id, agent);
+            }
+            prompt = (await liquidEngine.parseAndRender(promptTemplate, {
+                agent,
+                thread,
+                instructions,
+                participants: participants.values(),
+            })).trim();
+            if (prompt.length <= 45000 || thread.length <= 2) break;
+            thread.splice(1, 1);
+        }
+        console.log("Prompt:", prompt);
 
-    const promptTemplate = await (await fetch(chrome.runtime.getURL('prompt.md.liquid'))).text();
-    const prompt = (await liquidEngine.parseAndRender(promptTemplate, {
-        agent,
-        thread,
-        instructions,
-        participants: participants.values(),
-    })).trim();
-    console.log("Prompt:", prompt);
+        response = await fetch(`https://api.chirper.ai/v2/chat/${agent.id}?goal=autonomous`, { credentials: 'include' });
+        if (!response.ok) {
+            logError(`/v2/chat failed: ${response.status} ${response.statusText}`, response);
+            return;
+        }
+        const chat = (await response.json()).result;
+        if (!chat?.id) {
+            logError("Missing ['chat']['id']", response);
+            return;
+        }
 
-    response = await fetch(`https://api.chirper.ai/v2/chat/${agent.id}?goal=autonomous`, { credentials: 'include' });
-    if (!response.ok) {
-        console.error("/v2/chat failed", response);
-        return;
-    }
-    const chat = (await response.json()).result;
-    if (!chat?.id) {
-        console.error("Missing ['chat']['id']", response);
-        return;
-    }
+        url = new URL('https://api.chirper.ai/v2/message');
+        url.searchParams.append('chat', chat.id);
+        url.searchParams.append('limit', '1');
+        response = await fetch(url, { credentials: 'include' });
+        if (!response.ok) {
+            logError(`/v2/message failed: ${response.status} ${response.statusText}`, response);
+            return;
+        }
+        const messages = (await response.json()).result?.messages;
+        if (!Array.isArray(messages)) {
+            logError("Missing or invalid ['messages']", response);
+            return;
+        }
 
-    url = new URL('https://api.chirper.ai/v2/message');
-    url.searchParams.append('chat', chat.id);
-    url.searchParams.append('limit', '1');
-    response = await fetch(url, { credentials: 'include' });
-    if (!response.ok) {
-        console.error("/v2/message failed", response);
-        return;
+        const temp = Date.now()
+        const emitRequest = {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "temp": temp,
+                "goal": "autonomous",
+                "agent": agent.id,
+                "messages": [
+                    ...messages,
+                    {
+                        "id": `user-${temp}`,
+                        "role": "user",
+                        "createdAt": new Date().toISOString(),
+                        "content": [
+                            { "type": "text", "text": prompt }
+                        ]
+                    }
+                ]
+            })
+        };
+        response = await fetch(`https://api.chirper.ai/v2/chat/${chat.id}/emit`, emitRequest);
+        if (!response.ok) {
+            logError(`/v2/chat/emit failed: ${response.status} ${response.statusText}`);
+            return;
+        }
+    } catch (e) {
+        const msg = e instanceof Error ? e.message : e.toString();
+        logError(msg);
+        throw e;
     }
-    const messages = (await response.json()).result?.messages;
-    if (!Array.isArray(messages)) {
-        console.error("Missing or invalid ['messages']", response);
-        return;
-    }
-
-    const temp = Date.now()
-    response = await fetch(`https://api.chirper.ai/v2/chat/${chat.id}/emit`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            "temp": temp,
-            "goal": "autonomous",
-            "agent": agent.id,
-            "messages": [
-                ...messages,
-                {
-                    "id": `user-${temp}`,
-                    "role": "user",
-                    "createdAt": new Date().toISOString(),
-                    "content": [
-                        { "type": "text", "text": prompt }
-                    ]
-                }
-            ]
-        })
-    });
-    if (!response.ok) {
-        console.error("/v2/chat/emit failed", response);
-        return;
-    }
-
     sendResponse(true);
 }
 
@@ -176,7 +190,7 @@ console.log("content-script", "onMessage listener added");
 const port = chrome.runtime.connect();
 sendCanReply();
 
-let lastUrl = location.href; 
+let lastUrl = location.href;
 new MutationObserver(() => {
     const url = location.href;
     if (url !== lastUrl) {
