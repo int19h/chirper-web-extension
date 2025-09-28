@@ -37,7 +37,6 @@ async function handleAgentsRequest(request, sendResponse) {
     } catch (e) {
         console.error("handleAgentsRequest", e);
         message.error = e.toString();
-        throw e;
     } finally {
         sendResponse(message);
     }
@@ -159,7 +158,6 @@ async function handleReplyWithRequest(request, sendResponse) {
     } catch (e) {
         const msg = e instanceof Error ? e.message : e.toString();
         logError(msg);
-        throw e;
     }
     sendResponse(true);
 }
