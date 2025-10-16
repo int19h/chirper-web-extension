@@ -1,3 +1,5 @@
+let isUnloading = false;
+
 async function handleAgentsRequest(request, sendResponse) {
     let message = { error: "Unknown error" };
     try {
@@ -46,7 +48,9 @@ async function handleReplyWithRequest(request, sendResponse) {
     function logError(text, ...args) {
         console.error(text, ...args);
         sendResponse({ error: text });
-        alert("Error: " + text);
+        if (!isUnloading) {
+            alert("Error: " + text);
+        }
     }
     try {
         const instructions = request.instructions;
@@ -99,7 +103,7 @@ async function handleReplyWithRequest(request, sendResponse) {
                 instructions,
                 participants: participants.values(),
             })).trim();
-            if (prompt.length <= 45000 || thread.length <= 2) break;
+            if (prompt.length <= 40000 || thread.length <= 2) break;
             thread.splice(1, 1);
         }
         console.log("Prompt:", prompt);
@@ -198,3 +202,8 @@ new MutationObserver(() => {
         sendCanReply();
     }
 }).observe(document, { subtree: true, childList: true });
+
+window.addEventListener('beforeunload', () => {
+    console.log("content-script", "Page unloading.");
+    isUnloading = true;
+});
