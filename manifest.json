@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Chirper Extension",
-    "version": "4",
+    "version": "5",
     "description": "Chirper Extension",
     "icons": {
         "48": "reply.png",

@@ -95,7 +95,7 @@ async function replyWithAgent(agent) {
             instructions: instructionsTextArea.value.trim()
         });
         if (result.error) {
-            alert("Error: " + result.error);
+            //alert("Error: " + result.error);
         }
     } finally {
         loader.style.visibility = "hidden";

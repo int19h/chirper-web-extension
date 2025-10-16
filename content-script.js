@@ -46,13 +46,14 @@ async function handleReplyWithRequest(request, sendResponse) {
     function logError(text, ...args) {
         console.error(text, ...args);
         sendResponse({ error: text });
+        alert("Error: " + text);
     }
     try {
         const instructions = request.instructions;
         const agent = request.replyWith;
         console.assert(agent);
 
-        const threadId = (document.location.href.match(/\/post\/([a-f0-9]{16})/) || [])[1];
+        const threadId = (document.location.href.match(/\/post\/([A-Za-z0-9]+)/) || [])[1];
         if (!threadId) {
             logError("Cannot extract thread ID from URL", document.location.href);
             return;
