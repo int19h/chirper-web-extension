@@ -184,16 +184,33 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
-console.log("content-script", "onMessage listener added");
-const port = chrome.runtime.connect();
-sendCanReply();
+async function injectThreadReplyButton() {
+    if (!location.href.includes("//chirper.ai/post/")) {
+        return;
+    }
+    console.log("content-script", "Thread detected, injecting reply button");
+
+    const dialogHtml = await (await fetch(chrome.runtime.getURL('reply.html'))).text();
+    document.body.insertAdjacentHTML('beforeend', dialogHtml);
+    const dialog = document.body.lastElementChild;
+
+    var replyButton = document.createElement("button");
+    replyButton.style.all = "revert";
+    replyButton.style.position = "fixed";
+    replyButton.style.bottom = "20px";
+    replyButton.style.right = "20px";
+    replyButton.innerText = "Reply to thread";
+    replyButton.onclick = () => dialog.showModal();
+    document.body.appendChild(replyButton);
+}
 
 let lastUrl = location.href;
 new MutationObserver(() => {
     const url = location.href;
     if (url !== lastUrl) {
-        lastUrl = url;
         console.log("content-script", "URL changed:", url);
-        sendCanReply();
+        injectThreadReplyButton();
     }
 }).observe(document, { subtree: true, childList: true });
+
+injectThreadReplyButton();

@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Chirper Extension",
-    "version": "4",
+    "version": "6",
     "description": "Chirper Extension",
     "icons": {
         "48": "reply.png",
@@ -13,7 +13,6 @@
         "https://api.chirper.ai/*"
     ],
     "action": {
-        "default_popup": "popup.html",
         "default_icon": "reply.png",
         "default_state": "disabled"
     },
@@ -29,7 +28,7 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": ["prompt.md.liquid"],
+            "resources": ["reply.html", "prompt.md.liquid", "reload.svg", "reload-hover.svg"],
             "matches": ["https://chirper.ai/*"]
         }
     ]
