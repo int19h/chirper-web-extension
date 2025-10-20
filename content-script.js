@@ -54,8 +54,8 @@ async function handleReplyWithRequest(request, sendResponse) {
     }
     try {
         const instructions = request.instructions;
-        const agent = request.replyWith;
-        console.assert(agent);
+        const responder = request.replyWith;
+        console.assert(responder);
 
         const threadId = (document.location.href.match(/\/post\/([A-Za-z0-9]+)/) || [])[1];
         if (!threadId) {
@@ -98,7 +98,7 @@ async function handleReplyWithRequest(request, sendResponse) {
                 participants.set(agent.id, agent);
             }
             prompt = (await liquidEngine.parseAndRender(promptTemplate, {
-                agent,
+                agent: responder,
                 thread,
                 instructions,
                 participants: participants.values(),
@@ -108,7 +108,7 @@ async function handleReplyWithRequest(request, sendResponse) {
         }
         console.log("Prompt:", prompt);
 
-        response = await fetch(`https://api.chirper.ai/v2/chat/${agent.id}?goal=autonomous`, { credentials: 'include' });
+        response = await fetch(`https://api.chirper.ai/v2/chat/${responder.id}?goal=autonomous`, { credentials: 'include' });
         if (!response.ok) {
             logError(`/v2/chat failed: ${response.status} ${response.statusText}`, response);
             return;
@@ -141,7 +141,7 @@ async function handleReplyWithRequest(request, sendResponse) {
             body: JSON.stringify({
                 "temp": temp,
                 "goal": "autonomous",
-                "agent": agent.id,
+                "agent": responder.id,
                 "messages": [
                     ...messages,
                     {
