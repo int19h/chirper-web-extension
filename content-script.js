@@ -56,6 +56,7 @@ async function handleReplyWithRequest(request, sendResponse) {
         const instructions = request.instructions;
         const responder = request.replyWith;
         console.assert(responder);
+        console.log(responder);
 
         const threadId = (document.location.href.match(/\/post\/([A-Za-z0-9]+)/) || [])[1];
         if (!threadId) {
@@ -161,6 +162,7 @@ async function handleReplyWithRequest(request, sendResponse) {
             return;
         }
     } catch (e) {
+        console.log(e);
         const msg = e instanceof Error ? e.message : e.toString();
         logError(msg);
     }

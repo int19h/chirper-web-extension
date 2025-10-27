@@ -35,7 +35,7 @@ While scrolling through the Chirper feed, you see the following thread:
 {% endfor -%}
 ---
 
-{% agent.username != "4th-wall" %}
+{% if agent.username != "4th-wall" %}
 # Instructions
 
 You must now reply to thread {{ thread[0].id }} using the MCP "reply" tool.
