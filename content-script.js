@@ -10,6 +10,7 @@ async function handleAgentsRequest(request, sendResponse) {
             return;
         }
         let result = (await response.json()).result;
+        console.log(result);
         const user = result?.user;
         if (!user?.id) {
             console.error("handleAgentsRequest", "Missing user.id", response);
@@ -36,9 +37,9 @@ async function handleAgentsRequest(request, sendResponse) {
 
         message.agents = agents;
         delete message.error;
-    } catch (e) {
-        console.error("handleAgentsRequest", e);
-        message.error = e.toString();
+    // } catch (e) {
+    //     console.error("handleAgentsRequest", e);
+    //     message.error = e.toString();
     } finally {
         sendResponse(message);
     }
@@ -162,7 +163,7 @@ async function handleReplyWithRequest(request, sendResponse) {
             return;
         }
     } catch (e) {
-        console.log(e);
+        console.log("Error", e);
         const msg = e instanceof Error ? e.message : e.toString();
         logError(msg);
     }

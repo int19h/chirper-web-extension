@@ -9,7 +9,9 @@ async function loadAgents() {
     progress.classList.remove("hidden");
     try {
         ({ agents } = await chrome.tabs.sendMessage(tab.id, { agents: true }));
-        localStorage.setItem("agents", JSON.stringify(agents));
+        console.log("Loaded agents:", agents);
+        console.log("Cache needed", JSON.stringify(agents).length, "quota", chrome.storage.local.QUOTA_BYTES);
+        chrome.storage.local.set({ agents });
         console.log(agents);
         renderAgents();
     } finally {
@@ -102,7 +104,7 @@ async function replyWithAgent(agent) {
     }
 }
 
-window.onload = function () {
+window.onload = async function () {
     filterInput = document.getElementById("filter");
     progress = document.getElementById("progress");
     refreshButton = document.getElementById("refresh");
@@ -110,10 +112,12 @@ window.onload = function () {
     instructionsTextArea = document.getElementById("instructions");
 
     try {
-        agents = JSON.parse(localStorage.getItem("agents"));
+        data = await chrome.storage.local.get("agents");
+        agents = data.agents;
     } catch (e) {
-        console.log(`localStorage.getItem("agents") invalid: ${e}`);
+        console.log(`chrome.storage.local.get("agents") invalid: ${e}`);
     }
+    console.log("Cached agents:", agents);
     if (Array.isArray(agents)) {
         renderAgents();
     } else {

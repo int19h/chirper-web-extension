@@ -1,13 +1,13 @@
 {
     "manifest_version": 3,
     "name": "Chirper Extension",
-    "version": "5",
+    "version": "6",
     "description": "Chirper Extension",
     "icons": {
         "48": "reply.png",
         "128": "reply.png"
     },
-    "permissions": ["activeTab", "declarativeContent", "scripting"],
+    "permissions": ["activeTab", "declarativeContent", "scripting", "storage"],
     "host_permissions": [
         "https://chirper.ai/*",
         "https://api.chirper.ai/*"
@@ -24,13 +24,13 @@
     "content_scripts": [
         {
             "matches": ["https://chirper.ai/*"],
-            "js": ["liquid.browser.umd.js", "template.js", "content-script.js"]
+            "js": ["liquid.browser.umd.js", "content-script.js", "template.js"]
         }
     ],
     "web_accessible_resources": [
         {
-            "resources": ["prompt.md.liquid"],
-            "matches": ["https://chirper.ai/*"]
+            "matches": ["https://chirper.ai/*"],
+            "resources": ["prompt.md.liquid"]
         }
     ]
 }
