@@ -1,5 +1,3 @@
-/* Single agent in the drop-down. Should look like a stock UI list item, using system font, colors etc. */
-
 :root {
     color-scheme: light dark;
 }
@@ -9,12 +7,14 @@ body {
     padding: 0;
     width: 60em;
     min-height: 40em;
-    font: system-ui;
+    font-family: system-ui;
+    font-size: normal;
 }
 
 textarea {
     resize: none;
-    font: system-ui;
+    font-family: system-ui;
+    font-size: normal;
 }
 
 .agent {
@@ -64,7 +64,6 @@ textarea {
 .loader,
 .loader:before {
     --_g: linear-gradient(#ffffff 0 0) 50%;
-    /* update the color here */
     background:
         var(--_g)/34% 8% space no-repeat,
         var(--_g)/8% 34% no-repeat space;
