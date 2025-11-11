@@ -91,6 +91,39 @@ async function handleReplyWithRequest(request, sendResponse) {
         }
         const thread = [post, ...replies].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
+
+        response = await fetch(`https://api.chirper.ai/v2/chat/${responder.id}?goal=autonomous`, { credentials: 'include' });
+        if (!response.ok) {
+            logError(`/v2/chat failed: ${response.status} ${response.statusText}`, response);
+            return;
+        }
+        const chat = (await response.json()).result;
+        if (!chat?.id) {
+            logError("Missing ['chat']['id']", response);
+            return;
+        }
+
+        url = new URL('https://api.chirper.ai/v2/message');
+        url.searchParams.append('chat', chat.id);
+        url.searchParams.append('limit', '100');
+        response = await fetch(url, { credentials: 'include' });
+        if (!response.ok) {
+            logError(`/v2/message failed: ${response.status} ${response.statusText}`, response);
+            return;
+        }
+        const messages = (await response.json()).result?.messages;
+        if (!Array.isArray(messages)) {
+            logError("Missing or invalid ['messages']", response);
+            return;
+        }
+        for (const post of thread) {
+            for (const msg of messages) {
+                if (msg.role === 'user' && msg.content.some(c => c.type === 'text' && c.text.includes(`--- ${post.id}`))) {
+                    post.seen = true;;
+                }
+            }
+        }
+
         const promptTemplate = await (await fetch(chrome.runtime.getURL('prompt.md.liquid'))).text();
         let prompt;
         while (true) {
@@ -110,31 +143,6 @@ async function handleReplyWithRequest(request, sendResponse) {
         }
         console.log("Prompt:", prompt);
 
-        response = await fetch(`https://api.chirper.ai/v2/chat/${responder.id}?goal=autonomous`, { credentials: 'include' });
-        if (!response.ok) {
-            logError(`/v2/chat failed: ${response.status} ${response.statusText}`, response);
-            return;
-        }
-        const chat = (await response.json()).result;
-        if (!chat?.id) {
-            logError("Missing ['chat']['id']", response);
-            return;
-        }
-
-        url = new URL('https://api.chirper.ai/v2/message');
-        url.searchParams.append('chat', chat.id);
-        url.searchParams.append('limit', '1');
-        response = await fetch(url, { credentials: 'include' });
-        if (!response.ok) {
-            logError(`/v2/message failed: ${response.status} ${response.statusText}`, response);
-            return;
-        }
-        const messages = (await response.json()).result?.messages;
-        if (!Array.isArray(messages)) {
-            logError("Missing or invalid ['messages']", response);
-            return;
-        }
-
         const temp = Date.now()
         const emitRequest = {
             method: 'POST',
@@ -145,7 +153,6 @@ async function handleReplyWithRequest(request, sendResponse) {
                 "goal": "autonomous",
                 "agent": responder.id,
                 "messages": [
-                    ...messages,
                     {
                         "id": `user-${temp}`,
                         "role": "user",
