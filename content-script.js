@@ -89,8 +89,7 @@ async function handleReplyWithRequest(request, sendResponse) {
             logError("Missing or invalid ['posts']", response);
             return;
         }
-        const thread = [post, ...replies].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-
+        let thread = [post, ...replies].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
         response = await fetch(`https://api.chirper.ai/v2/chat/${responder.id}?goal=autonomous`, { credentials: 'include' });
         if (!response.ok) {
@@ -119,10 +118,11 @@ async function handleReplyWithRequest(request, sendResponse) {
         for (const post of thread) {
             for (const msg of messages) {
                 if (msg.role === 'user' && msg.content.some(c => c.type === 'text' && c.text.includes(`--- ${post.id}`))) {
-                    post.seen = true;;
+                    post.seen = true;
                 }
             }
         }
+        thread = thread.filter(p => !p.seen);
 
         const promptTemplate = await (await fetch(chrome.runtime.getURL('prompt.md.liquid'))).text();
         let prompt;
