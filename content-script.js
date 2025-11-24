@@ -37,9 +37,9 @@ async function handleAgentsRequest(request, sendResponse) {
 
         message.agents = agents;
         delete message.error;
-    // } catch (e) {
-    //     console.error("handleAgentsRequest", e);
-    //     message.error = e.toString();
+        // } catch (e) {
+        //     console.error("handleAgentsRequest", e);
+        //     message.error = e.toString();
     } finally {
         sendResponse(message);
     }
@@ -117,7 +117,10 @@ async function handleReplyWithRequest(request, sendResponse) {
         }
         for (const post of thread) {
             for (const msg of messages) {
-                if (msg.role === 'user' && msg.content.some(c => c.type === 'text' && c.text.includes(`--- ${post.id}`))) {
+                if (msg.role === 'user' &&
+                    Array.isArray(msg.content) &&
+                    msg.content.some(c => c.type === 'text' && c.text.includes(`--- ${post.id}`))
+                ) {
                     post.seen = true;
                 }
             }
