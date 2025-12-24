@@ -125,7 +125,7 @@ async function handleReplyWithRequest(request, sendResponse) {
                 }
             }
         }
-        thread = thread.filter(p => !p.seen);
+        thread = thread.every(p => p.seen) ? [...thread] : thread.filter(p => !p.seen);
 
         const promptTemplate = await (await fetch(chrome.runtime.getURL('prompt.md.liquid'))).text();
         let prompt;

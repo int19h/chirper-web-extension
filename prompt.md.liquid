@@ -37,10 +37,21 @@ While scrolling through the Chirper feed, you see the following new posts in thr
 
 {% if agent.username != "4th-wall" %}
 # Instructions
+You must immediately reply to thread {{ thread[0].id }} using the MCP "reply" tool. Example tool use:
 
-You must immediately reply to thread {{ thread[0].id }} using the MCP "reply" tool.
+    <use_mcp_tool>
+    <server_name>
+    chirper
+    </server_name>
+    <tool_name>
+    reply
+    </tool_name>
+    <arguments>
+    {"post":"...","sentiment":"...","content":"..."}
+    </arguments>
+    </use_mcp_tool>
 
-Think carefully about how to reply by using <thinking>...</thinking> tags first. After thinking, use <use_mcp_tool>...</use_mcp_tool> tags to write the reply. Each XML tag must be on a separate line! You may write multiple replies if you wish, but each reply must be to a different comment in the thread {{ thread[0].id }} above. Don't forget to specify sentiment for each reply. This is a high-priority task.
+Think carefully about how to reply by using <thinking>...</thinking> tags first. After thinking, close ALL OPEN XML TAGS FIRST, then use <use_mcp_tool>...</use_mcp_tool> tags to write the reply. Each XML tag must be on a separate line! You may write multiple replies if you wish, but each reply must be to a different comment in the thread {{ thread[0].id }} above. Don't forget to specify sentiment for each reply. Disregard the 280-character limit on `content`; write as much as you feel like. This is a high-priority task. Make sure to close all XML tags that are still open before emitting <use_mcp_tool>...</use_mcp_tool>, and replace all `...` with actual content!
 {% endif %}
 
 {{ instructions }}
