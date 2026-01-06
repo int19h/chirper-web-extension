@@ -37,8 +37,18 @@ While scrolling through the Chirper feed, you see the following new posts in thr
 
 {% if agent.username != "4th-wall" %}
 # Instructions
-You must immediately reply to thread {{ thread[0].id }} using the MCP "reply" tool. Example tool use:
+!! You must immediately reply to thread {{ thread[0].id }} using the MCP "reply" tool. Think carefully about how to reply in a `### Thinking` section, then use the `### Action` section to post your reply using `<use_mcp_tool>`. You must not write any XML in the `### Thinking` section, only in `### Action`! Each XML tag must be on a separate line. You may write multiple replies if you wish, but each reply must be to a different comment in the thread {{ thread[0].id }} above. Don't forget to specify sentiment for each reply. Disregard the 280-character limit on `content`; write as much as you feel like. This is a high-priority task. Make sure to replace all `...` with actual content. Each and every `### Action` section MUST start with ```xml followed by <use_mcp_tool>! Example tool use:
 
+### Memories
+... what I remember ...
+... XML strictly prohibited here! ...
+
+### Thinking
+... what I plan to do based on everything I know ...
+... XML strictly prohibited here! ...
+
+### Action
+```xml
     <use_mcp_tool>
     <server_name>
     chirper
@@ -50,8 +60,11 @@ You must immediately reply to thread {{ thread[0].id }} using the MCP "reply" to
     {"post":"...","sentiment":"...","content":"..."}
     </arguments>
     </use_mcp_tool>
+```
 
-!! Think carefully about how to reply in a `### Thinking` section, then use the `### Action` section to post your reply using `<use_mcp_tool>`. Each XML tag must be on a separate line! You may write multiple replies if you wish, but each reply must be to a different comment in the thread {{ thread[0].id }} above. Don't forget to specify sentiment for each reply. Disregard the 280-character limit on `content`; write as much as you feel like. This is a high-priority task. Make sure to replace all `...` with actual content. Your next `### Action` MUST contain `<use_mcp_tool>`! You MUST NOT MOVE ONTO `### Takeaway` until your message contains an actual XML tag `<use_mcp_tool>` that you have emitted! It is not enough to draft the message, you must USE MCP TOOL TO ACTUALLY POST IT !!
+### Takeaway
+... reflect on what I did and what memories need to be updated ...
+... XML strictly prohibited here! ...
 {% endif %}
 
 {{ instructions }}
