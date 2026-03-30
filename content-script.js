@@ -141,7 +141,7 @@ async function handleReplyWithRequest(request, sendResponse) {
                 instructions,
                 participants: participants.values(),
             })).trim();
-            if (prompt.length <= 40000 || thread.length <= 2) break;
+            if (prompt.length <= 30000 || thread.length <= 2) break;
             thread.splice(1, 1);
         }
         console.log("Prompt:", prompt);
